@@ -3,6 +3,7 @@ React Native
 
 Learn
 
+https://www.youtube.com/watch?v=rIYzLhkG9TA React Native Full 8 Hours Course (Expo, Expo Router, Supabase)
 https://www.youtube.com/watch?v=q3HE1dFiJBI  -> 30 Saat
 https://www.youtube.com/watch?v=BTfcnxXevm0
 https://www.youtube.com/watch?v=5ckSvrxiRI8
