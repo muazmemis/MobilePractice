@@ -1,98 +1,98 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
+// rnfes
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
+const index = () => {
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
+    <SafeAreaView style={styles.mySafeAreaView}>
+      <View style={styles.myCard}>
+        <View style={styles.myPicture}></View>
+        <Text style={styles.myName}>Muaz Memiş</Text>
+        <Text style={styles.location}>Istanbul, Turkey</Text>
+        <Text style={styles.title}>Backend Developer</Text>
+        <View style={styles.myButtonContainer}>
+          <TouchableOpacity style={styles.myButton}>
+            <Text style={styles.myButtonText}>Github</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.myButton}>
+            <Text style={styles.myButtonText}>Frontend Mentor</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.myButton}>
+            <Text style={styles.myButtonText}>LinkedIn</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.myButton}>
+            <Text style={styles.myButtonText}>Twitter</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.myButton}>
+            <Text style={styles.myButtonText}>Instagram</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </SafeAreaView>
   );
-}
+};
 
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
+export default index;
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
-  );
-}
+const colors = {
+  black: '#141414',
+  darkGray: '#1F1F1F',
+  gray: '#333333',
+  lightgray: '#999999',
+  white: '#FFFFFF',
+  lemon: '#C3DB6C',
+};
 
 const styles = StyleSheet.create({
-  container: {
+  mySafeAreaView: {
     flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
+    backgroundColor: colors.black,
   },
-  safeArea: {
+  myCard: {
     flex: 1,
-    paddingHorizontal: Spacing.four,
     alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+    backgroundColor: colors.gray,
+    padding: 20,
+    borderRadius: 15,
   },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+  myPicture: {
+    backgroundColor: colors.lightgray,
+    width: 100,
+    height: 100,
+    borderRadius: 100,
+    marginHorizontal: 20,
+  },
+  myName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: colors.white,
+    marginTop: 8,
+  },
+  location: {
+    fontSize: 18,
+    color: colors.lemon,
+    marginTop: 8,
   },
   title: {
+    fontSize: 14,
+    color: colors.lightgray,
+    marginTop: 8,
+  },
+  myButtonContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    gap: 20,
+  },
+  myButton: {
+    backgroundColor: colors.lightgray,
+    padding: 16,
+    borderRadius: 15,
+    width: '100%',
+  },
+  myButtonText: {
     textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+    fontSize: 16,
+    fontWeight: 'semibold',
+    color: colors.white,
   },
 });
