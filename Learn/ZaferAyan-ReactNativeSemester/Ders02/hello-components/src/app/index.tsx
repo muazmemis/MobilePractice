@@ -47,11 +47,12 @@ const styles = StyleSheet.create({
   mySafeAreaView: {
     flex: 1,
     backgroundColor: colors.black,
+    padding: 20,
   },
   myCard: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: colors.gray,
+    backgroundColor: colors.darkGray,
     padding: 20,
     borderRadius: 15,
   },
@@ -79,14 +80,14 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   myButtonContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    gap: 20,
+    width: '100%',
+    marginTop: 24,
+    gap: 18,
   },
   myButton: {
-    backgroundColor: colors.lightgray,
+    backgroundColor: colors.gray,
     padding: 16,
-    borderRadius: 15,
+    borderRadius: 10,
     width: '100%',
   },
   myButtonText: {
