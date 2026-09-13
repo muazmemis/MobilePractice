@@ -10,4 +10,11 @@ npm run start
 npm run android
 npm run ios
 npm run web
+
+npm run reset-project
 ```
+
+Dev tools:
+android => cmd+m
+ios => cmd+d
+
