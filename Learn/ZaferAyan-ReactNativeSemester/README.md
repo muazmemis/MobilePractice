@@ -18,3 +18,14 @@ npm run reset-project
 Dev tools:
 android => cmd+m
 ios => cmd+d
+
+icon: <https://icons.expo.fyi>
+
+```sh
+npx expo install @expo/vector-icons
+```
+
+```ts
+import Entypo from '@expo/vector-icons/Entypo';
+<Entypo name="feather" size={24} color="black" />
+```
