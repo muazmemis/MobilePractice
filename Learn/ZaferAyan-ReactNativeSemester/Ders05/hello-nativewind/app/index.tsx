@@ -1,29 +1,43 @@
-import { Link, Stack } from 'expo-router';
+import QRCode from 'qrcode';
+import { useState } from 'react';
+import { Image, Text, TextInput, View } from 'react-native';
 
-import { Text, View } from 'react-native';
+const Index = () => {
+  const [imageUrl, setImageUrl] = useState('');
 
-import { Button } from '@/components/Button';
-import { Container } from '@/components/Container';
-import { ScreenContent } from '@/components/ScreenContent';
-
-export default function Home() {
   return (
-    <View className={styles.container}>
-      <Stack.Screen options={{ title: 'Home' }} />
-      <Container>
-        <ScreenContent path="app/index.tsx" title="Home"></ScreenContent>
-
-        <View className={styles.buttonWrapper}>
-          <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
-            <Button title="Show Details" className="mx-6" />
-          </Link>
+    <View className="flex-1 bg-blue-100">
+      <TextInput
+        onChangeText={(text) => {
+          QRCode.toFile('../assets/qr.png', text)
+            .then((url) => {
+              console.log(url);
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        }}
+        className="m-4 rounded border-2 border-blue-500 p-4"
+        placeholder="qr text"
+      />
+      <View className="flex-1 items-center justify-center ">
+        {/* Card Component */}
+        <View className="w-64 rounded-xl bg-white p-4 shadow-md shadow-gray-300">
+          {/* QR Container */}
+          <View className="items-center justify-center rounded-xl bg-blue-500 p-8">
+            <Image source={require('../assets/qr.png')} className="h-36 w-36" />
+          </View>
+          {/* Text List */}
+          <Text className="mt-4 text-center text-lg font-semibold">
+            Improve your front-end skills by building projects
+          </Text>
+          <Text className="text-md mb-4 mt-2 text-center text-gray-600">
+            Scan the QR code to visit Youtube and take your coding skills to the next level
+          </Text>
         </View>
-      </Container>
+      </View>
     </View>
   );
-}
-
-const styles = {
-  container: 'flex flex-1 bg-white',
-  buttonWrapper: 'mx-4',
 };
+
+export default Index;

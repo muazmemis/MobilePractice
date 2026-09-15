@@ -1,24 +1,37 @@
-import { forwardRef } from 'react';
-import { Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 
-interface ButtonProps extends TouchableOpacityProps {
-  title: string;
-}
+type Props = {
+  title?: string;
+  variant?: 'primary' | 'secondary' | 'danger' | 'warning' | 'success';
+};
 
-export const Button = forwardRef<View, ButtonProps>(({ title, ...touchableProps }, ref) => {
+const Button = ({ title = 'Click me', variant = 'primary' }: Props) => {
+  let bgColor = '';
+  switch (variant) {
+    case 'primary':
+      bgColor = 'bg-green-500';
+      break;
+    case 'secondary':
+      bgColor = 'bg-blue-500';
+      break;
+    case 'danger':
+      bgColor = 'bg-red-500';
+      break;
+    case 'warning':
+      bgColor = 'bg-yellow-500';
+      break;
+    case 'success':
+      bgColor = 'bg-green-700';
+      break;
+    default:
+      bgColor = 'bg-gray-500';
+      break;
+  }
   return (
-    <TouchableOpacity
-      ref={ref}
-      {...touchableProps}
-      className={`${styles.button} ${touchableProps.className}`}>
-      <Text className={styles.buttonText}>{title}</Text>
+    <TouchableOpacity className={`m-4 rounded-xl p-4 ${bgColor}`}>
+      <Text className="text-center text-sm text-white">{title}</Text>
     </TouchableOpacity>
   );
-});
-
-Button.displayName = 'Button';
-
-const styles = {
-  button: 'items-center bg-indigo-500 rounded-[28px] shadow-md p-4',
-  buttonText: 'text-white text-lg font-semibold text-center',
 };
+
+export default Button;

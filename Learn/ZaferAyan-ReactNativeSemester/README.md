@@ -26,6 +26,14 @@ bunx rn-new@latest hello-nativewind --expo-router --nativewind
 ni nativewind@4.2.1
 nr ios
 nr android
+
+npm i -g qrcode
+qrcode --version
+qrcode --help
+qrcode "eksik11.com" -t png -o qr.png -l "#FF000000" -d "#FFFF"
+
+ni qrcode
+ni --save-dev @types/qrcode
 ```
 
 Dev tools:
