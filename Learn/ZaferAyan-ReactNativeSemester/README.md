@@ -13,6 +13,19 @@ npm run ios
 npm run web
 
 npm run reset-project
+
+npm i -g @antfu/ni
+brew install ni
+
+curl -fsSL https://bun.sh/install | bash
+source ~/.zshrc
+# OR use Homebrew to install Bun
+brew install oven-sh/bun/bun
+
+bunx rn-new@latest hello-nativewind --expo-router --nativewind
+ni nativewind@4.2.1
+nr ios
+nr android
 ```
 
 Dev tools:
@@ -29,3 +42,5 @@ npx expo install @expo/vector-icons
 import Entypo from '@expo/vector-icons/Entypo';
 <Entypo name="feather" size={24} color="black" />
 ```
+
+<https://www.nativewind.dev/>
