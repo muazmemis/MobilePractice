@@ -23,7 +23,7 @@ source ~/.zshrc
 brew install oven-sh/bun/bun
 
 bunx rn-new@latest hello-nativewind --expo-router --nativewind
-ni nativewind@4.2.1
+ni nativewind@4.2.7
 nr ios
 nr android
 
@@ -52,3 +52,12 @@ import Entypo from '@expo/vector-icons/Entypo';
 ```
 
 <https://www.nativewind.dev/>
+
+Aşağıdaki importlar görmezse çalıştır:
+**`Cmd+Shift+P` → "TypeScript: Restart TS Server"**
+
+```tsx
+import Header from '@/components/Header';
+import Notification from '@/components/Notification';
+import { notifications as data } from '@/data/data';
+```

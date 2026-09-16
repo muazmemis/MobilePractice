@@ -1,29 +1,26 @@
-import { Stack, Link } from 'expo-router';
+import Header from '@/components/Header';
+import Notification from '@/components/Notification';
+import { notifications as data } from '@/data/data';
+import { useState } from 'react';
+import { FlatList, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { View } from 'react-native';
+const Home = () => {
+  const [notifications, setNotifications] = useState(data);
 
-import { Button } from '@/components/Button';
-import { Container } from '@/components/Container';
-import { ScreenContent } from '@/components/ScreenContent';
-
-export default function Home() {
   return (
-    <View className={styles.container}>
-      <Stack.Screen options={{ title: 'Home' }} />
-      <Container>
-        <ScreenContent path="app/index.tsx" title="Home"></ScreenContent>
-
-        <View className={styles.buttonWrapper}>
-          <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
-            <Button title="Show Details" className="mx-6" />
-          </Link>
-        </View>
-      </Container>
-    </View>
+    <SafeAreaView>
+      <Header />
+      <FlatList
+        // className="gap-2" // contentContainerClassName kullanmak gerekiyor
+        contentContainerClassName="p-4"
+        ItemSeparatorComponent={() => <View className="h-4"></View>}
+        data={notifications}
+        keyExtractor={(n) => n.id}
+        renderItem={({ item: n }) => <Notification notification={n} />}
+      />
+    </SafeAreaView>
   );
-}
-
-const styles = {
-  container: 'flex flex-1 bg-white',
-  buttonWrapper: 'mx-4',
 };
+
+export default Home;
