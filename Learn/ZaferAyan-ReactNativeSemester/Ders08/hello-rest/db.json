@@ -1,0 +1,146 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Zafer",
+      "username": "zafer123",
+      "email": "zafer@example.com",
+      "phone": "123-456-7890",
+      "website": "zafer.com",
+      "company": {
+        "name": "Zafer Inc."
+      },
+      "address": {
+        "street": "123 Main St",
+        "suite": "Apt. 1",
+        "city": "Istanbul",
+        "zipcode": "34000"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Enes",
+      "username": "enes123",
+      "email": "enes@example.com",
+      "phone": "234-567-8901",
+      "website": "enes.com",
+      "company": {
+        "name": "Enes Inc."
+      },
+      "address": {
+        "street": "456 Main St",
+        "suite": "Apt. 2",
+        "city": "Istanbul",
+        "zipcode": "34001"
+      }
+    },
+    {
+      "id": "ff6f",
+      "name": "Ali",
+      "username": "ali123",
+      "email": "ali@example.com",
+      "phone": "345-678-9012",
+      "website": "ali.com",
+      "company": {
+        "name": "Ali Inc."
+      },
+      "address": {
+        "street": "789 Main St",
+        "suite": "Apt. 3",
+        "city": "Istanbul",
+        "zipcode": "34002"
+      }
+    },
+    {
+      "id": "9bb0",
+      "name": "Ahmet",
+      "username": "ahmet123",
+      "email": "ahmet@example.com",
+      "phone": "456-789-0123",
+      "website": "ahmet.com",
+      "company": {
+        "name": "Ahmet Inc."
+      },
+      "address": {
+        "street": "101 Main St",
+        "suite": "Apt. 4",
+        "city": "Istanbul",
+        "zipcode": "34003"
+      }
+    },
+    {
+      "id": "f979",
+      "name": "Ayse",
+      "username": "ayse123",
+      "email": "ayse@example.com",
+      "phone": "567-890-1234",
+      "website": "ayse.com",
+      "company": {
+        "name": "Ayse Inc."
+      },
+      "address": {
+        "street": "202 Main St",
+        "suite": "Apt. 5",
+        "city": "Istanbul",
+        "zipcode": "34004"
+      }
+    },
+    {
+      "name": "Asd",
+      "id": "iNa-eApTNGM"
+    },
+    {
+      "name": "Ahmeteasd",
+      "id": "fs7CildU_sA"
+    },
+    {
+      "name": "3",
+      "id": "2xFR0A2S6R8"
+    },
+    {
+      "name": "4",
+      "id": "wTeXHCNn4uc"
+    },
+    {
+      "name": "Erg",
+      "id": "4XgTlqa4eQs"
+    },
+    {
+      "name": "Erg",
+      "id": "vFt9D8uwE5U"
+    },
+    {
+      "name": "",
+      "id": "nyLJOy9YLaQ"
+    },
+    {
+      "name": "Erg",
+      "id": "hWKZf_Td2Ek"
+    },
+    {
+      "name": "Erg",
+      "id": "ic66QefJLWY"
+    },
+    {
+      "name": "Erg",
+      "id": "sG2BUw2iRos"
+    },
+    {
+      "name": "Erg",
+      "id": "OIs1oYAVvw0"
+    },
+    {
+      "name": "Erg",
+      "id": "yJn4ZKv8rzM"
+    },
+    {
+      "name": "Erg2",
+      "id": "xumTOBdAsfY"
+    },
+    {
+      "name": "Erg2",
+      "id": "0epe2k8ueKE"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

@@ -1,6 +1,7 @@
-import { Link } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { API_URL } from '@/src/constans/constants';
+import { Link, useFocusEffect } from 'expo-router';
+import { useCallback, useState } from 'react';
+import { Button, FlatList, Text, View } from 'react-native';
 
 export type User = {
   id: number;
@@ -21,21 +22,38 @@ export type User = {
 };
 
 const Index = () => {
-  const [user, setuser] = useState<User[]>([]);
-  const API_URL = 'https://jsonplaceholder.typicode.com/users';
+  const [users, setUsers] = useState<User[]>([]);
+  // const API_URL = 'https://jsonplaceholder.typicode.com/users';
 
-  useEffect(() => {
-    fetch(API_URL)
-      .then((response) => response.json())
-      .then((data) => setuser(data))
-      .catch((error) => console.error(error));
-  }, []);
+  // useEffect(() => {
+  //   // fetch(API_URL)
+  //   fetch(`${API_URL}/users`)
+  //     .then((response) => response.json())
+  //     .then((data) => setUsers(data))
+  //     .catch((error) => console.error(error));
+  // }, []);
+
+  const getUsers = () => {
+    fetch(API_URL + '/users')
+      .then((res) => res.json())
+      .then((json) => setUsers(json));
+  };
+
+  // Ekrana geri dönüldüğünde çağrılır
+  useFocusEffect(
+    useCallback(() => {
+      console.log('[useFocusEffect]');
+      getUsers();
+    }, [])
+  );
 
   return (
     <View>
-      <Text className="p-4 text-6xl font-bold">Index</Text>
+      <Link href="/users/add" asChild>
+        <Button title="Add User" />
+      </Link>
       <FlatList
-        data={user}
+        data={users}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <Link href={`/users/${item.id}`}>

@@ -34,6 +34,8 @@ qrcode "eksik11.com" -t png -o qr.png -l "#FF000000" -d "#FFFF"
 
 ni qrcode
 ni --save-dev @types/qrcode
+
+ni -D json-server concurrently
 ```
 
 Dev tools:
