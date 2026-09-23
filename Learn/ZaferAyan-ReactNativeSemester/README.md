@@ -24,6 +24,7 @@ brew install oven-sh/bun/bun
 
 bunx rn-new@latest hello-nativewind --expo-router --nativewind
 ni nativewind@4.2.7
+ni @tanstack/react-query
 nr ios
 nr android
 
@@ -36,8 +37,6 @@ ni qrcode
 ni --save-dev @types/qrcode
 
 ni -D json-server concurrently
-
-bun add @tanstack/react-query
 ```
 
 Dev tools:
