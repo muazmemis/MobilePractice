@@ -36,6 +36,8 @@ ni qrcode
 ni --save-dev @types/qrcode
 
 ni -D json-server concurrently
+
+bun add @tanstack/react-query
 ```
 
 Dev tools:
@@ -63,3 +65,5 @@ import Header from '@/components/Header';
 import Notification from '@/components/Notification';
 import { notifications as data } from '@/data/data';
 ```
+
+<https://usehooks.com/>
