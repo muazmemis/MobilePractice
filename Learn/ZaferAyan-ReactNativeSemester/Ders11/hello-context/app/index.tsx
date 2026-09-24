@@ -1,29 +1,19 @@
-import { Stack, Link } from 'expo-router';
-
-import { View } from 'react-native';
-
-import { Button } from '@/components/Button';
-import { Container } from '@/components/Container';
-import { ScreenContent } from '@/components/ScreenContent';
+import { useTheme } from '@/src/contexts/ThemeContext';
+import { Button, Text, View } from 'react-native';
 
 export default function Home() {
-  return (
-    <View className={styles.container}>
-      <Stack.Screen options={{ title: 'Home' }} />
-      <Container>
-        <ScreenContent path="app/index.tsx" title="Home"></ScreenContent>
+  const { theme, toggleTheme } = useTheme();
 
-        <View className={styles.buttonWrapper}>
-          <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
-            <Button title="Show Details" className="mx-6" />
-          </Link>
-        </View>
-      </Container>
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: theme.backgroundColor,
+      }}>
+      <Text style={{ color: theme.color, fontSize: theme.fontSize }}>Home Screen</Text>
+      <Button title="Toggle Theme" onPress={toggleTheme} />
     </View>
   );
 }
-
-const styles = {
-  container: 'flex flex-1 bg-white',
-  buttonWrapper: 'mx-4',
-};
