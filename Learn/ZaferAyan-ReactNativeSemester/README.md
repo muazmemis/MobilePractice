@@ -25,6 +25,7 @@ brew install oven-sh/bun/bun
 bunx rn-new@latest hello-nativewind --expo-router --nativewind
 ni nativewind@4.2.7
 ni @tanstack/react-query
+ni @react-native-async-storage/async-storage # bun expo install @react-native-async-storage/async-storage
 nr ios
 nr android
 
