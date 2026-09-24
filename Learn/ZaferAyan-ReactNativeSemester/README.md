@@ -25,7 +25,10 @@ brew install oven-sh/bun/bun
 bunx rn-new@latest hello-nativewind --expo-router --nativewind
 ni nativewind@4.2.7
 ni @tanstack/react-query
-ni @react-native-async-storage/async-storage # bun expo install @react-native-async-storage/async-storage
+# https://react-native-async-storage.github.io/2.0/Usage/
+ni @react-native-async-storage/async-storage # bun expo install @react-native-async-storage/async-storage ## expo bunu kullanmayı önermiyor.
+ni expo-sqlite # async storage yerine bunu kullan. https://docs.expo.dev/versions/latest/sdk/sqlite/#the-localstorage-api
+ni expo-secure-store # token tutmak için SecureStore kullan: https://docs.expo.dev/versions/latest/sdk/securestore/
 nr ios
 nr android
 

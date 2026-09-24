@@ -15,7 +15,7 @@
 //  L useTheme.ts
 //  L types.ts
 
-import 'expo-sqlite/localStorage/install';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
 export interface Theme {
@@ -28,7 +28,7 @@ export interface Theme {
 
 export interface ThemeContextType {
   theme: Theme;
-  toggleTheme: () => void;
+  toggleTheme: () => Promise<void>;
 }
 
 export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -43,19 +43,21 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
-    const restoreTheme = () => {
-      const storedTheme = localStorage.getItem('theme');
-      if (storedTheme) {
-        localStorage.setItem('theme', storedTheme);
-        console.log(localStorage.getItem('theme'));
-        setTheme(JSON.parse(storedTheme));
+    const restoreTheme = async () => {
+      try {
+        const storedTheme = await AsyncStorage.getItem('theme');
+        if (storedTheme) {
+          setTheme(JSON.parse(storedTheme));
+        }
+      } catch (error) {
+        console.error('Tema bilgisi geri yüklenemedi:', error);
       }
     };
 
     restoreTheme();
   }, []);
 
-  const toggleTheme = () => {
+  const toggleTheme = async () => {
     const nextTheme: Theme = {
       ...theme,
       color: theme.color === 'black' ? 'white' : 'black',
@@ -66,7 +68,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     };
 
     setTheme(nextTheme);
-    localStorage.setItem('theme', JSON.stringify(nextTheme));
+    try {
+      await AsyncStorage.setItem('theme', JSON.stringify(nextTheme));
+    } catch (error) {
+      console.error('Tema bilgisi kaydedilemedi:', error);
+    }
   };
 
   const value: ThemeContextType = { theme, toggleTheme };
