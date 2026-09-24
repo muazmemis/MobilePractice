@@ -1,5 +1,8 @@
 # Learn React Native
 
+[JavaScript Mastery - React Native Full Course 2026 | Build, Publish and Monetize a Full Stack Mobile App to App Store](https://www.youtube.com/watch?v=4nVoLX2taFg)
+[Clerk Sign Up](https://dashboard.clerk.com/sign-up?utm_source=js-mastery&utm_medium=youtube&utm_campaign=expo-cc&dub_id=imsKx8Fw9Iss5Rn0)
+[Codesistency - Full Stack React Native Tutorial for Beginners in 2026](https://www.youtube.com/watch?v=TuwcMlYAJlA)
 [Traversey Media - React Native Crash Course 2026 - Build a Complete Mobile App](https://www.youtube.com/watch?v=XCifkDC0yXA)
 [PedroTech - React Native Best Practices Full Course 2026 - Optimisations, Error Tracking, OpenTelemetry...](https://www.youtube.com/watch?v=HIIcEMjWXNE)
 [FreeCodeCamp - React Native Full Stack Course – Clerk, Postgres, NativeWind](https://www.youtube.com/watch?v=4GtVeULrNks)
@@ -12,3 +15,7 @@
 
 [Codesistency - Build a Real Mobile App with GPT-6 Astra - FULL COURSE 2026](https://www.youtube.com/watch?v=FegYRu-swbA)
 [Zafer Ayan -Expo Skills Kullanarak 10 dakikada Mobil Uygulama Geliştiriyoruz! - Zafer Skills](https://www.youtube.com/watch?v=Cn8-aYjUBcw)
+
+## APP Development
+
+[Sujan Anand - 🔴 Let's build a Full Stack AI Meal Planner App | React Native + FastAPI + Claude](https://www.youtube.com/watch?v=D8Z64tzTNNI)
