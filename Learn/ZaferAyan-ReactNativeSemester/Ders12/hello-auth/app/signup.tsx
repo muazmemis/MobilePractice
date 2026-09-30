@@ -1,21 +1,19 @@
-import { login } from '@/src/lib/features/login';
+import { signup } from '@/src/lib/features/signup';
 import { Link } from 'expo-router';
+
 import { useState } from 'react';
 import { Button, TextInput, View } from 'react-native';
-
-export default function Login() {
+export default function SignUp() {
   const [email, setEmail] = useState<string>('muazmemis@gmail.com');
   const [password, setPassword] = useState<string>('passw0rd!');
-
-  const handleLogin = async () => {
-    // handle login logic here
+  const handleSignUp = async () => {
     try {
-      await login(email, password);
-      console.log('Login successful');
-      alert('Login successful');
+      await signup(email, password);
+      console.log('Sign up successful');
+      alert('Sign up successful');
     } catch (error) {
       console.error(error);
-      alert('Login failed');
+      alert('Sign up failed: ' + error);
     }
   };
   return (
@@ -27,11 +25,9 @@ export default function Login() {
         secureTextEntry
         placeholder="Enter your password"
       />
-      {/* login button */}
-      <Button title="Login" onPress={handleLogin} />
-
-      <Link href="/signup" asChild>
-        <Button title="Sign Up" />
+      <Button title="Sign Up" onPress={handleSignUp} />
+      <Link href="/" asChild dismissTo>
+        <Button title="Login" />
       </Link>
     </View>
   );
