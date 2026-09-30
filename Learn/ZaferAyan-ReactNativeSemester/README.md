@@ -32,6 +32,8 @@ ni expo-secure-store # token tutmak için SecureStore kullan: https://docs.expo.
 nr ios
 nr android
 
+ni @supabase/supabase-js react-native-url-polyfill
+
 npm i -g qrcode
 qrcode --version
 qrcode --help
