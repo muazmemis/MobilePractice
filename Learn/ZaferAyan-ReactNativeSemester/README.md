@@ -12,6 +12,22 @@ npm run android
 npm run ios
 npm run web
 
+npx expo run ios -d  # Run the iOS app on a connected device or simulator
+# ? Select a device ›
+#     iPhone 17 Pro (26.5)
+# ❯   iPhone 17 Pro Max (26.5)
+#     iPhone 17e (26.5)
+#     iPhone Air (26.5)
+#     iPhone 17 (26.5)
+#     iPad Pro 13-inch (M5) (26.5)
+#     iPad Pro 11-inch (M5) (26.5)
+#     iPad mini (A17 Pro) (26.5)
+#     iPad Air 13-inch (M4) (26.5)
+#     iPad Air 11-inch (M4) (26.5)
+#     iPad (A16) (26.5)
+npx expo run android -d  # Run the Android app on a connected device or emulator
+
+
 npm run reset-project
 
 npm i -g @antfu/ni
@@ -33,6 +49,7 @@ nr ios
 nr android
 
 ni @supabase/supabase-js react-native-url-polyfill
+ni @supabase/supabase-js react-native-url-polyfill @react-native-async-storage/async-storage
 
 npm i -g qrcode
 qrcode --version

@@ -1,29 +1,46 @@
-import { Stack, Link } from 'expo-router';
+// rnfe
 
-import { View } from 'react-native';
+import {
+  useAddTodoWithErrors,
+  useDeleteTodoWithErrors,
+  useTodosWithErrors,
+} from '@/src/hooks/useTodos';
+import { useState } from 'react';
+import { Button, FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-import { Button } from '@/components/Button';
-import { Container } from '@/components/Container';
-import { ScreenContent } from '@/components/ScreenContent';
+const Index = () => {
+  const { data: todos } = useTodosWithErrors();
+  const [title, setTitle] = useState('');
+  const { mutate: addTodo, error: addTodoError } = useAddTodoWithErrors();
+  const { mutate: deleteTodo, error: deleteTodoError } = useDeleteTodoWithErrors();
 
-export default function Home() {
   return (
-    <View className={styles.container}>
-      <Stack.Screen options={{ title: 'Home' }} />
-      <Container>
-        <ScreenContent path="app/index.tsx" title="Home"></ScreenContent>
-
-        <View className={styles.buttonWrapper}>
-          <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
-            <Button title="Show Details" className="mx-6" />
-          </Link>
-        </View>
-      </Container>
+    <View>
+      <TextInput value={title} onChangeText={setTitle} className="border p-4" />
+      <Button title="Ekle" onPress={() => addTodo(title)} />
+      {addTodoError && (
+        <Text className="text-red-500">Bir hata oluştu: {addTodoError.message}</Text>
+      )}
+      {deleteTodoError && (
+        <Text className="text-red-500">Bir hata oluştu: {deleteTodoError.message}</Text>
+      )}
+      <FlatList
+        data={todos}
+        keyExtractor={(todo) => todo.id.toString()}
+        renderItem={({ item: todo }) => {
+          const textClass = todo.isCompleted ? 'line-through' : '';
+          return (
+            <View className="flex-row gap-4">
+              <Text className={'text-6xl' + ' ' + textClass}>{todo.title}</Text>
+              <TouchableOpacity onPress={() => deleteTodo(todo.id)}>
+                <Text className={'text-6xl'}>🚮</Text>
+              </TouchableOpacity>
+            </View>
+          );
+        }}
+      />
     </View>
   );
-}
-
-const styles = {
-  container: 'flex flex-1 bg-white',
-  buttonWrapper: 'mx-4',
 };
+
+export default Index;
