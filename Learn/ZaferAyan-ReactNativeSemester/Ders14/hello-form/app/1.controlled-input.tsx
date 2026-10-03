@@ -36,9 +36,20 @@ const Index = () => {
 
   return (
     <View>
-      <TextInput className="p-2 mb-2 border" placeholder="Email" value={email} onChangeText={setEmail} />
+      <TextInput
+        className="mb-2 border p-2"
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+      />
       {emailError && <Text className="text-red-500">{emailError}</Text>}
-      <TextInput className="p-2 mb-2 border" placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry />
+      <TextInput
+        className="mb-2 border p-2"
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+      />
       {passwordError && <Text className="text-red-500">{passwordError}</Text>}
       <Button title="Login" onPress={handleLogin} />
     </View>

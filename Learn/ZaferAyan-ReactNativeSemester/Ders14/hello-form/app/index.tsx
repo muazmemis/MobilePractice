@@ -1,8 +1,8 @@
-import { View, Text, TextInput, Button } from 'react-native';
-import React from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { z } from 'zod';
+import RHFInput from '@/src/components/RHFInput';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { Button, View } from 'react-native';
+import { z } from 'zod';
 
 const loginSchema = z.object({
   email: z.email('Geçerli bir mail adresi giriniz!'),
@@ -12,13 +12,11 @@ const loginSchema = z.object({
 type LoginFormData = z.infer<typeof loginSchema>;
 
 const Index = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormData>({
+  const { control, handleSubmit } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
   });
+
+  console.log('RENDERED');
 
   const onSubmit = (data: { email: string; password: string }) => {
     console.log(data);
@@ -26,37 +24,8 @@ const Index = () => {
 
   return (
     <View>
-      <Controller
-        control={control}
-        rules={{ required: 'Email adresi girişi zorunludur' }}
-        name="email"
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            placeholder="Email"
-            className="p-4 text-4xl border"
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
-        )}
-      />
-      {errors.email && <Text className="text-2xl text-red-500">{errors.email.message}</Text>}
-      <Controller
-        control={control}
-        rules={{ required: 'Parola girişi zorunludur' }}
-        name="password"
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            placeholder="Parola"
-            secureTextEntry
-            className="p-4 text-4xl border"
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
-        )}
-      />
-      {errors.password && <Text className="text-2xl text-red-500">{errors.password.message}</Text>}
+      <RHFInput control={control} name="email" />
+      <RHFInput control={control} name="password" />
       <Button title="Giriş Yap" onPress={handleSubmit(onSubmit)} />
     </View>
   );
