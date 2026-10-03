@@ -61,6 +61,8 @@ ni qrcode
 ni --save-dev @types/qrcode
 
 ni -D json-server concurrently
+
+bun create expo-app love-meter-ai --template default@next
 ```
 
 Dev tools:
