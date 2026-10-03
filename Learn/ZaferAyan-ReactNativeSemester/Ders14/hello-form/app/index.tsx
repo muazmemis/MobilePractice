@@ -1,29 +1,65 @@
-import { Stack, Link } from 'expo-router';
+import { View, Text, TextInput, Button } from 'react-native';
+import React from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import { View } from 'react-native';
+const loginSchema = z.object({
+  email: z.email('Geçerli bir mail adresi giriniz!'),
+  password: z.string('Boş bırakmayınız').min(8, 'Şifre en az 8 karakter olmalıdır'),
+});
 
-import { Button } from '@/components/Button';
-import { Container } from '@/components/Container';
-import { ScreenContent } from '@/components/ScreenContent';
+type LoginFormData = z.infer<typeof loginSchema>;
 
-export default function Home() {
+const Index = () => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const onSubmit = (data: { email: string; password: string }) => {
+    console.log(data);
+  };
+
   return (
-    <View className={styles.container}>
-      <Stack.Screen options={{ title: 'Home' }} />
-      <Container>
-        <ScreenContent path="app/index.tsx" title="Home"></ScreenContent>
-
-        <View className={styles.buttonWrapper}>
-          <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
-            <Button title="Show Details" className="mx-6" />
-          </Link>
-        </View>
-      </Container>
+    <View>
+      <Controller
+        control={control}
+        rules={{ required: 'Email adresi girişi zorunludur' }}
+        name="email"
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput
+            placeholder="Email"
+            className="p-4 text-4xl border"
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+      />
+      {errors.email && <Text className="text-2xl text-red-500">{errors.email.message}</Text>}
+      <Controller
+        control={control}
+        rules={{ required: 'Parola girişi zorunludur' }}
+        name="password"
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput
+            placeholder="Parola"
+            secureTextEntry
+            className="p-4 text-4xl border"
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+      />
+      {errors.password && <Text className="text-2xl text-red-500">{errors.password.message}</Text>}
+      <Button title="Giriş Yap" onPress={handleSubmit(onSubmit)} />
     </View>
   );
-}
-
-const styles = {
-  container: 'flex flex-1 bg-white',
-  buttonWrapper: 'mx-4',
 };
+
+export default Index;

@@ -50,7 +50,7 @@ nr android
 
 ni @supabase/supabase-js react-native-url-polyfill
 ni @supabase/supabase-js react-native-url-polyfill @react-native-async-storage/async-storage
-ni react-hook-form @hookform/resolvers zod
+ni react-hook-form @hookform/resolvers zod # https://react-hook-form.com/get-started
 
 npm i -g qrcode
 qrcode --version
